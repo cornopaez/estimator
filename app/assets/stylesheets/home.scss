@@ -1,0 +1,199 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
+/*Estimator top section
+---------------------------------------*/
+
+.estimator-top-section {
+  background: white;
+}
+
+/*Form
+---------------------------------------*/
+.procedure {
+  margin: 20px 0;
+  position: relative;
+}
+
+.zip,
+.selections {
+  margin: 20px 0;
+}
+
+.main-inputs {
+  position: relative;
+}
+
+.loading {
+  z-index: 1;
+  position: absolute;
+  height: 30px;
+  pointer-events: none;
+  visibility: hidden;
+  right: 2px;
+  top: 22px;
+}
+
+.empty-procedure {
+  z-index: 2;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.dropdown-toggle {
+  margin: 0;
+}
+
+.selections {
+  display: block;
+  height: 34px;
+}
+
+button {
+  margin: 20px 0 0 0;
+}
+
+/*Price Table
+---------------------------------------*/
+.price-scale {
+  padding: 20px;
+  text-align: center;
+  background: white;
+}
+
+.container {
+  max-width: 500px;
+}
+
+.row {
+  margin: 0;
+}
+
+.section-title {
+  background: #afaeae;
+  padding: 0 10px;
+  border-radius: 6px 6px 0 0;
+}
+
+.section-title > h1 {
+  margin: 20px 0;
+  padding: 0;
+  color: #fff;
+  font-size: 22px;
+}
+
+.speech-bubble-display {
+  padding: 10px 0;
+}
+
+.speech-bubble-display,
+.scale-data {
+  min-height: 40px;
+}
+
+.speech-bubble {
+  display:  block;
+  position: relative;
+  width: 150px;
+  padding: 7px;
+  border: 3px solid grey;
+  border-radius: 9px;
+  left: 50px; /*This needs to changed to be moved about. 
+           between 50px (min)and 280px (max)*/
+}
+
+.speech-bubble:before {
+  z-index: 2;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -9px;
+  left: 55px;
+  border-top: 9px solid white;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+}
+
+.speech-bubble:after {
+  z-index: 1;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -13px;
+  left: 54px;
+  border-top: 10px solid grey;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.section-content {
+  border-left: 2px solid #afaeae;
+  border-bottom: 2px solid #afaeae;
+  border-right: 2px solid #afaeae;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.scale-left-cell,
+.scale-center-cell,
+.scale-right-cell,
+.low-price,
+.high-price {
+  min-height: 19px;
+}
+
+.scale-left-cell {
+  background: linear-gradient(to bottom, #00af00 0%,#013c01 100%);
+  border-radius: 6px 0 0 6px;
+}
+
+.scale-center-cell {
+  background: linear-gradient(to bottom, yellow 0%, #868603 100%);
+}
+
+.scale-right-cell {
+  background: linear-gradient(to bottom, red 0%, #810101 100%);
+  border-radius: 0 6px 6px 0;
+}
+
+.low-price {
+  text-align: right;
+  color: green;
+  padding: 0 10px 0 0;
+}
+
+.high-price {
+  text-align: left;
+  color: red;
+  padding: 0 0 0 10px;
+}
+
+/*Autocomplete
+-------------------------------*/
+.ui-autocomplete {
+  font-size: 15px;
+  text-align: left;
+  background: white;
+  list-style: none;
+  max-width: 550px;
+}
+#ui-id-1 {
+  padding: 13px;
+}
+
+.ud-list-item:hover {
+  border-bottom: 1px solid black;
+}
+
+/*Examples
+--------------------------------*/
+#example_length,
+#example_filter,
+#example_info,
+#example_paginate {
+  display: none;
+}

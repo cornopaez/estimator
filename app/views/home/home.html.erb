@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cost Estimator</title>
+	</head>
+	<body>
+		<div class="landing">
+			<div class="section-form">
+				<div class="container">
+					<!-- <form class="mainForm">
+	                <div class="main-inputs row">
+	                  <img src="ring.svg" class="loading"/>
+	                  <div class="glyphicon glyphicon-remove empty-procedure"></div>
+	                  <input type="text" name="procedure" class="procedure  form-control" placeholder="Procedure">
+	                  <input type="text" name="zip" class="zip form-control" placeholder="Zip Code">
+	                  <div class="dropdown">
+	                    <button class="btn btn-default dropdown-toggle insurance" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	                      <span class="menu-text">Insurance Selection</span>
+	                      <span class="caret"></span>
+	                    </button>
+	                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	                      <li class="no-insurance">No Insurance</li>
+	                      <li class="medicare">Medicate</li>
+	                    </ul>
+	                  </div>
+	                  <button type="submit" class="getEstimate btn btn-primary">Get estimate</button>
+	                </div>
+	              </form> -->
+	              <%= form_tag("/search", method: "get", class: "mainForm") do %>
+	              	<%= text_field_tag(:procedure, "", class: 'procedure form-control', :placeholder => "Procedure") %>
+	              	<%= text_field_tag(:zip, "", class: 'procedure form-control', :placeholder => "Zip Code") %>
+	              	<%= select_tag(:dropdown_menu, options_for_select([["Insurace Selection", ""],["No Insurace", 1], ["Medicare", 2]]), class: "btn btn-default selections") %>
+	              	<%= submit_tag("Get Estimate", class: "getEstimate btn btn-primary") %>
+	              <% end %>
+				</div>
+			</div>
+		</div>
+			<div class="price-scale">
+			    <div class="container">
+			    	<div class="row section-title">
+			    		<h1 class="title-text">
+							Procedure Name
+						</h1>
+					</div>
+					<div class="row section-content">
+						<div class="row speech-bubble-display">
+							<span class="speech-bubble">National Average: $0</span>
+						</div>
+						<div class="row scale-data">
+							<div class="col-xs-3 low-price">
+								$0
+							</div>
+							<div class="col-xs-2 scale-left-cell"></div>
+							<div class="col-xs-2 scale-center-cell"></div>
+							<div class="col-xs-2 scale-right-cell"></div>
+							<div class="col-xs-3 high-price">
+								$0
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
+	</body>
+</html>
