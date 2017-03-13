@@ -5,6 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Money
+gem 'money-rails', '~>1'
+# Awesome Print
+gem 'awesome_print'
+# HTTParty
+gem 'httparty'
 # Bootsrap
 gem 'bootstrap-sass', '~> 3.3.6'
 # PokitDok

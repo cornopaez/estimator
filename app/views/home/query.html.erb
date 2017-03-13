@@ -1,0 +1,25 @@
+<div class="price-scale">
+    <div class="container">
+    	<div class="row section-title">
+    		<h1 class="title-text">
+				<%= @procedure_name %>
+			</h1>
+		</div>
+		<div class="row section-content">
+			<div class="row speech-bubble-display">
+				<span class="speech-bubble" style="left: <%= @left %>px">National Average: <%= @average_price %></span>
+			</div>
+			<div class="row scale-data">
+				<div class="col-xs-3 low-price">
+					<%= @low_price %>
+				</div>
+				<div class="col-xs-2 scale-left-cell"></div>
+				<div class="col-xs-2 scale-center-cell"></div>
+				<div class="col-xs-2 scale-right-cell"></div>
+				<div class="col-xs-3 high-price">
+					<%= @high_price %>
+				</div>
+			</div>
+		</div>
+	</div>  
+</div>
