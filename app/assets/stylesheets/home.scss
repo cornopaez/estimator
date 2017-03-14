@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 
+html {
+  font-family: "Roboto"
+}
+
 /*Estimator top section
 ---------------------------------------*/
 
@@ -191,8 +195,17 @@ button {
 
 /*Map
 -------------------------------*/
-.map-data > .container {
-  max-width: 800px;
+.map-data {
+  > .container {
+
+    width: 800px;
+
+    > .row {
+      > .col-xs-12 {
+        padding: 0;
+      }
+    }
+  }
 }
 
 /*Examples
@@ -202,4 +215,52 @@ button {
 #example_info,
 #example_paginate {
   display: none;
+}
+
+/*Locations
+--------------------------------*/
+
+.table {
+  > .container {
+    > .row {
+      > .title {
+        background: #afaeae;
+        padding: 10px;
+        margin: 20px 0;
+        color: white;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.provider {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background-color: #F6F6F6;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.provider .name {
+  color: #2E9ADF;
+  font-size: 20px;
+  margin: 0;
+}
+
+.provider .general-info {
+  margin: 0;
+  font-size: 13px;
+}
+
+address,
+.contact {
+  font-style: initial;
+  font-size: 14px;
+}
+
+.row-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }

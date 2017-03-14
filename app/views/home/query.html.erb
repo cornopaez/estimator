@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 <div class="price-scale">
     <div class="container">
     	<div class="row section-title">
@@ -27,10 +29,45 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="map-container" style='width: 100%;'>
-				  <div id="map" style='width: 100%; height: 400px;'></div>
+				<div id="map-container" style='width: 100%;'>
+				  <div id="map" style='width: 100%; height: 200px;'></div>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="table">
+	<div class="container">
+		<div class="row">
+			<div class="title">
+				Providers in the area
+			</div>
+			<% @pokit_providers["data"].each do |item| %> 
+				<div class="provider">
+					<div class="row-top">
+						<h3 class="name">
+										<%= item["provider"]["prefix"] %>
+										<%= item["provider"]["first_name"] %> 
+										<%= item["provider"]["last_name"] %> 
+										<%= item["provider"]["suffix"] %>
+										<%= item["provider"]["organization_name"] %></h3>
+						<p class="general-info">
+							Specialty: <%= item["provider"]["specialty"][0] %></p>
+					</div>
+					<div class="row-bottom">
+						<address>
+							<%= item["provider"]["locations"][0]["address_lines"][0] %>
+							<%= item["provider"]["locations"][0]["address_lines"][1] %><br>
+							<%= item["provider"]["locations"][0]["city"] %>, <%= item["provider"]["locations"][0]["state"] %> <%= item["provider"]["locations"][0]["zipcode"] %><br>
+						</address>
+						<div class="contact">
+							P: <%= item["provider"]["phone"] %><br>
+							F: <%= item["provider"]["fax"] %>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
@@ -42,7 +79,7 @@
 	handler = Gmaps.build('Google');
 	handler.buildMap({
 	    provider: {
-	      disableDefaultUI: true
+	      // disableDefaultUI: true
 	      // pass in other Google Maps API options here
 	    },
 	    internal: {
@@ -50,15 +87,10 @@
 	    }
 	  },
 	  function(){
-	    markers = handler.addMarkers([
-	      {
-	        "lat": 40.441770,
-	        "lng": -80.012238,
-	        "infowindow": "hello!"
-	      }
-	    ]);
+	    markers = handler.addMarkers(<%=raw @markers.to_json %>);
 	    handler.bounds.extendWith(markers);
 	    handler.fitMapToBounds();
+	    // handler.getMap().setZoom(12);
 	  }
 	);
 </script>
