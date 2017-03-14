@@ -9,7 +9,6 @@ html {
 
 /*Estimator top section
 ---------------------------------------*/
-
 .estimator-top-section {
   background: white;
 }
@@ -29,6 +28,11 @@ html {
 .main-inputs {
   position: relative;
 }
+.section-form {
+  > .container {
+    position: relative;
+  }
+}
 
 .loading {
   z-index: 1;
@@ -36,7 +40,7 @@ html {
   height: 30px;
   pointer-events: none;
   visibility: hidden;
-  right: 2px;
+  right: 17px;
   top: 22px;
 }
 
@@ -44,7 +48,15 @@ html {
   z-index: 2;
   position: absolute;
   top: 30px;
-  right: 10px;
+  right: 26px;
+  visibility: hidden;
+}
+
+.empty-zip {
+  z-index: 2;
+  position: absolute;
+  top: 84px;
+  right: 26px;
   visibility: hidden;
 }
 
@@ -181,25 +193,32 @@ button {
 .ui-autocomplete {
   font-size: 15px;
   text-align: left;
-  background: white;
+  background: #F6F6F6;
+  opacity: 0.85;
   list-style: none;
-  max-width: 550px;
-}
-#ui-id-1 {
-  padding: 13px;
 }
 
-.ud-list-item:hover {
-  border-bottom: 1px solid black;
+#ui-id-1 {
+  padding: 13px;
+  width: 470px;
+
+  > .ui-menu-item {
+    border-bottom: 1px solid #F6F6F6;
+  }
+
+  > .ui-menu-item:hover {
+    border-bottom: 1px solid black;
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }
 
 /*Map
 -------------------------------*/
 .map-data {
   > .container {
-
-    width: 800px;
-
     > .row {
       > .col-xs-12 {
         padding: 0;

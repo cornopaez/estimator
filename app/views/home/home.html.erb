@@ -4,16 +4,16 @@
 		<title>Cost Estimator</title>
 	</head>
 	<body>
-		<div class="landing">
-			<div class="section-form">
-				<div class="container">
-	              <%= form_tag("/", method: "get", class: "mainForm") do %>
-	              	<%= text_field_tag(:procedure, "", class: 'procedure form-control', :placeholder => "Procedure") %>
-	              	<%= text_field_tag(:zip, "", class: 'procedure form-control', :placeholder => "Zip Code") %>
-	              	<%= select_tag(:dropdown_menu, options_for_select([["Insurace Selection", ""],["No Insurace", 1], ["Medicare", 2]]), class: "btn btn-default selections") %>
-	              	<%= submit_tag("Get Estimate", class: "getEstimate btn btn-primary") %>
-	              <% end %>
-				</div>
+		<div class="section-form">
+			<div class="container">
+				<img src="<%= asset_path('ring.svg') %>" class="loading"/>
+				<div class="glyphicon glyphicon-remove empty-procedure"></div>
+				<%= form_tag("/", method: "get", class: "mainForm") do %>
+					<%= text_field_tag(:procedure, "", class: 'procedure form-control', :placeholder => "Procedure") %>
+					<%= text_field_tag(:zip, "", class: 'zip form-control', :placeholder => "Zip Code") %>
+					<%= select_tag(:dropdown_menu, options_for_select([["Insurace Selection", ""],["No Insurace", 1], ["Medicare", 2]]), class: "btn btn-default selections") %>
+					<%= submit_tag("Get Estimate", class: "get-estimate btn btn-primary") %>
+				<% end %>
 			</div>
 		</div>
 	</body>

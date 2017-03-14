@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# JQuery UI
+gem 'jquery-ui-rails'
 #Google Maps
 gem 'gmaps4rails'
 # Money

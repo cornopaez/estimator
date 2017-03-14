@@ -61,6 +61,7 @@ class HomeController < ApplicationController
 
 		@markers = Array.new
 
+		
 		@pokit_providers["data"].each do |item|
 
 			text = "#{item["provider"]["first_name"]} #{item["provider"]["last_name"]}"
