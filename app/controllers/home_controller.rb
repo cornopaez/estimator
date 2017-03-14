@@ -5,18 +5,21 @@ class HomeController < ApplicationController
 	require 'pokitdok'
 	require 'dotenv'
 	require "uri"
-	require "awesome_print"
+	# require "awesome_print"
 
 	Dotenv.load("config.env")
 
 	def home
+	end
+
+	def query
+
+		# PokitDok Code
 		# client_id = ENV["POKITDOK_CLIENT_ID"]
 		# client_secret = ENV["POKITDOK_CLIENT_SECRET"]
 		# pd = PokitDok::PokitDok.new(client_id, client_secret)
 		# @pokit = pd.plans({state: 'PA'})
-	end
 
-	def query
 		# Values for Medicare data query
 		strings = [
 			"$select=hcpcs_description,stddev_pop(average_submitted_charge_amount),AVG(average_submitted_charge_amount),MAX(average_submitted_charge_amount),MIN(average_submitted_charge_amount)",
@@ -41,6 +44,10 @@ class HomeController < ApplicationController
 		@high_price = number_to_currency(high_price)
 		@low_price = number_to_currency(low_price)
 		@left = ((230 * (avg - low_price)) / (high_price - low_price)) + 50
+
+		# Google Maps Information
+		@google_maps_key = ENV["GOOGLE_MAPS_KEY"]
+
 	end
 
 end

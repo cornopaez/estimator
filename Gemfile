@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#Google Maps
+gem 'gmaps4rails'
 # Money
 gem 'money-rails', '~>1'
 # Awesome Print
