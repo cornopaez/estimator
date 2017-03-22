@@ -25,6 +25,12 @@ class HomeController < ApplicationController
 			"&$where=hcpcs_description='" + params["procedure"] + "'"
 		]
 
+		new_strings = [
+			"select=hcpcs_code",
+			"&$limit=1",
+			"&$where=hcpcs_description='" + params["procedure"] + "'"
+		]
+
 		token = {"$$app_token" => ENV["SOCRATA_TOKEN"]}
 
 		# Medicare data
@@ -34,19 +40,30 @@ class HomeController < ApplicationController
 		)
 
 		# Initial values from data
-		avg = response[0]["AVG_average_submitted_charge_amount"].to_f
+		cpt_code = response[0]["hcpcs_code"]
+		national_avg = response[0]["AVG_average_submitted_charge_amount"].to_f
 		stddev = response[0]["stddev_pop_average_submitted_charge_amount"].to_f
 		low = response[0]["MIN_average_submitted_charge_amount"].to_f
 		high = response[0]["MAX_average_submitted_charge_amount"].to_f
-		high_price = high <= (avg + (stddev * 2)) ? high : avg + (stddev * 2)
-		low_price = (avg - (stddev * 2)) <= low ? low : avg - (stddev * 2)
+		high_price = high <= (national_avg + (stddev * 2)) ? high : national_avg + (stddev * 2)
+		low_price = (national_avg - (stddev * 2)) <= low ? low : national_avg - (stddev * 2)
+
+		# PokitDok Code
+		# client_id = ENV["POKITDOK_CLIENT_ID"]
+		# client_secret = ENV["POKITDOK_CLIENT_SECRET"]
+		# pd = PokitDok::PokitDok.new(client_id, client_secret)
+		# pricing = pd.insurance_prices({zip_code: zipcode, cpt_code: cpt_code})
+		pricing = {"meta"=>{"processing_time"=>74, "application_mode"=>"production", "credits_billed"=>1, "credits_remaining"=>12, "rate_limit_cap"=>5000, "rate_limit_reset"=>1490225380, "rate_limit_amount"=>12, "activity_id"=>"58d302daefccc900d9848465"}, "data"=>{"cpt_code"=>"27447", "geo_zip_area"=>"152", "amounts"=>[{"standard_deviation"=>1239.3633781611984, "low_price"=>304.04, "average_price"=>2351.0965, "median_price"=>2679.23, "high_price"=>4788.0, "payer_type"=>"insurance", "payment_type"=>"allowed"}, {"standard_deviation"=>811.3419322648355, "low_price"=>4634.61, "average_price"=>5164.045500000001, "median_price"=>5251.92, "high_price"=>6911.99, "payer_type"=>"insurance", "payment_type"=>"submitted"}, {"standard_deviation"=>496.8429438013698, "low_price"=>156.975, "average_price"=>787.3663756553706, "median_price"=>1127.1318249306123, "high_price"=>1254.3717391, "payer_type"=>"medicare", "payment_type"=>"paid"}, {"standard_deviation"=>2256.5140651794936, "low_price"=>500.0, "average_price"=>3876.6129100445764, "median_price"=>4640.0, "high_price"=>8444.8333333, "payer_type"=>"medicare", "payment_type"=>"submitted"}, {"standard_deviation"=>632.2291265513841, "low_price"=>199.13625, "average_price"=>1001.1944047703305, "median_price"=>1436.078567148148, "high_price"=>1637.405, "payer_type"=>"medicare", "payment_type"=>"allowed"}]}}
+		regional_avg = pricing["data"]["amounts"][1]["average_price"]
 
 		# Values to render
 		@procedure_name = response[0]["hcpcs_description"]
-		@average_price = number_to_currency(avg)
+		@national_average = number_to_currency(national_avg)
+		@regional_average = number_to_currency(pricing["data"]["amounts"][1]["average_price"])
 		@high_price = number_to_currency(high_price)
 		@low_price = number_to_currency(low_price)
-		@left = ((230 * (avg - low_price)) / (high_price - low_price)) + 50
+		@top_left = ((230 * (national_avg - low_price)) / (high_price - low_price)) + 50
+		@bottom_left = ((230 * (regional_avg - low_price)) / (high_price - low_price)) + 50
 
 		# PokitDok Code
 		# client_id = ENV["POKITDOK_CLIENT_ID"]

@@ -1,73 +1,80 @@
-<div class="price-scale">
-    <div class="container">
-    	<div class="row section-title">
-    		<h1 class="title-text">
-				<%= @procedure_name %>
-			</h1>
-		</div>
-		<div class="row section-content">
-			<div class="row speech-bubble-display">
-				<span class="speech-bubble" style="left: <%= @left %>px">National Average: <%= @average_price %></span>
+<div class="col-md-8 pricing-data">
+	<div class="price-scale">
+	    <div class="container">
+	    	<div class="row section-title">
+	    		<h1 class="title-text">
+					<%= @procedure_name %>
+				</h1>
 			</div>
-			<div class="row scale-data">
-				<div class="col-xs-3 low-price">
-					<%= @low_price %>
+			<div class="row section-content">
+				<div class="row speech-bubble-display">
+					<span class="speech-bubble bubble-top" style="left: <%= @top_left %>px">National Average: <%= @national_average %></span>
 				</div>
-				<div class="col-xs-2 scale-left-cell"></div>
-				<div class="col-xs-2 scale-center-cell"></div>
-				<div class="col-xs-2 scale-right-cell"></div>
-				<div class="col-xs-3 high-price">
-					<%= @high_price %>
+				<div class="row scale-data">
+					<div class="col-xs-3 low-price">
+						<%= @low_price %>
+					</div>
+					<div class="col-xs-2 scale-left-cell"></div>
+					<div class="col-xs-2 scale-center-cell"></div>
+					<div class="col-xs-2 scale-right-cell"></div>
+					<div class="col-xs-3 high-price">
+						<%= @high_price %>
+					</div>
+				</div>
+				<div class="row speech-bubble-display">
+					<span class="speech-bubble bubble-bottom" style="left: <%= @bottom_left %>px">Regional Average: <%= @regional_average %></span>
 				</div>
 			</div>
-		</div>
-	</div>  
-</div>
-<div class="map-data">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div id="map-container" style='width: 100%;'>
-				  <div id="map" style='width: 100%; height: 200px;'></div>
+		</div>  
+	</div>
+	<div class="map-data">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="map-container" style='width: 100%;'>
+					  <div id="map" style='width: 100%; height: 200px;'></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-<div class="table">
-	<div class="container">
-		<div class="row">
-			<div class="title">
-				Providers in the area
-			</div>
-			<% @pokit_providers["data"].each do |item| %> 
-				<div class="provider">
-					<div class="row-top">
-						<h3 class="name">
-										<%= item["provider"]["prefix"] %>
-										<%= item["provider"]["first_name"] %> 
-										<%= item["provider"]["last_name"] %> 
-										<%= item["provider"]["suffix"] %>
-										<%= item["provider"]["organization_name"] %></h3>
-						<p class="general-info">
-							Specialty: <%= item["provider"]["specialty"][0] %></p>
-					</div>
-					<div class="row-bottom">
-						<address>
-							<%= item["provider"]["locations"][0]["address_lines"][0] %>
-							<%= item["provider"]["locations"][0]["address_lines"][1] %><br>
-							<%= item["provider"]["locations"][0]["city"] %>, <%= item["provider"]["locations"][0]["state"] %> <%= item["provider"]["locations"][0]["zipcode"] %><br>
-						</address>
-						<div class="contact">
-							P: <%= item["provider"]["phone"] %><br>
-							F: <%= item["provider"]["fax"] %>
+	<div class="table">
+		<div class="container">
+			<div class="row">
+				<div class="title">
+					Providers in the area
+				</div>
+				<% @pokit_providers["data"].each do |item| %> 
+					<div class="provider">
+						<div class="row-top">
+							<h3 class="name">
+											<%= item["provider"]["prefix"] %>
+											<%= item["provider"]["first_name"] %> 
+											<%= item["provider"]["last_name"] %> 
+											<%= item["provider"]["suffix"] %>
+											<%= item["provider"]["organization_name"] %></h3>
+							<p class="general-info">
+								Specialty: <%= item["provider"]["specialty"][0] %></p>
+						</div>
+						<div class="row-bottom">
+							<address>
+								<%= item["provider"]["locations"][0]["address_lines"][0] %>
+								<%= item["provider"]["locations"][0]["address_lines"][1] %><br>
+								<%= item["provider"]["locations"][0]["city"] %>, <%= item["provider"]["locations"][0]["state"] %> <%= item["provider"]["locations"][0]["zipcode"] %><br>
+							</address>
+							<div class="contact">
+								P: <%= item["provider"]["phone"] %><br>
+								F: <%= item["provider"]["fax"] %>
+							</div>
 						</div>
 					</div>
-				</div>
-			<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
+</div>
+<div class="col-md-4 insurance-data">
+	
 </div>
 
 <!-- Scripts -->

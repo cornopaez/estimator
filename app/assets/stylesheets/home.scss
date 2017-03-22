@@ -106,9 +106,12 @@ button {
   padding: 10px 0;
 }
 
-.speech-bubble-display,
-.scale-data {
+.speech-bubble-display {
   min-height: 40px;
+}
+
+.scale-data {
+  height: 19px;
 }
 
 .speech-bubble {
@@ -122,7 +125,7 @@ button {
            between 50px (min)and 280px (max)*/
 }
 
-.speech-bubble:before {
+.bubble-top:before {
   z-index: 2;
   content: "";
   display: block;
@@ -134,7 +137,7 @@ button {
   border-right: 9px solid transparent;
 }
 
-.speech-bubble:after {
+.bubble-top:after {
   z-index: 1;
   content: "";
   display: block;
@@ -142,6 +145,30 @@ button {
   bottom: -13px;
   left: 54px;
   border-top: 10px solid grey;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.bubble-bottom:before {
+  z-index: 2;
+  content: "";
+  display: block;
+  position: absolute;
+  top: -9px;
+  left: 55px;
+  border-bottom: 9px solid white;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+}
+
+.bubble-bottom:after {
+  z-index: 1;
+  content: "";
+  display: block;
+  position: absolute;
+  top: -13px;
+  left: 54px;
+  border-bottom: 10px solid grey;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
 }
@@ -282,4 +309,12 @@ address,
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+/*Insurance
+--------------------------------*/
+
+.insurance-data {
+  background-color: lightgrey;
+  height: 100vh;
 }
