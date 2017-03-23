@@ -7,6 +7,20 @@ html {
   font-family: "Roboto"
 }
 
+body {
+  background-color: lightgrey;
+  position: relative;
+}
+
+.col-md-7 {
+  background-color: white;
+  position: relative;
+}
+
+.col-md-5 {
+  position: relative;
+}
+
 /*Estimator top section
 ---------------------------------------*/
 .estimator-top-section {
@@ -315,6 +329,5 @@ address,
 --------------------------------*/
 
 .insurance-data {
-  background-color: lightgrey;
-  height: 100vh;
+
 }
